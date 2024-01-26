@@ -13,6 +13,9 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
+      - name: Create v1 directory
+        run: mkdir -p v1
+
       - name: Download File 1
         run: curl -o v1/obce.csv https://statistiky.ekcr.info/otevrena-data/data/obce.csv
 
