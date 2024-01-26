@@ -1,0 +1,32 @@
+name: Download Open Data
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 0 * * *"
+
+jobs:
+  download_files:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Download File 1
+        run: curl -o /v1/obce.csv https://statistiky.ekcr.info/otevrena-data/data/obce.csv
+
+      - name: Download File 2
+        run: curl -o /v1/soudni-exekutori.csv https://statistiky.ekcr.info/otevrena-data/data/soudni-exekutori.csv
+
+      - name: Download File 3
+        run: curl -o /v1/povinni.csv https://statistiky.ekcr.info/otevrena-data/data/povinni.csv
+
+      - name: Commit and push changes
+        run: |
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "actions@github.com"
+          git add .
+          timestamp=$(date "+%Y-%m-%dT%H:%M:%S")
+          git commit -m "Latest data: ${timestamp}" || exit 0
+          git push
