@@ -14,13 +14,13 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Download File 1
-        run: curl -o /v1/obce.csv https://statistiky.ekcr.info/otevrena-data/data/obce.csv
+        run: curl -o v1/obce.csv https://statistiky.ekcr.info/otevrena-data/data/obce.csv
 
       - name: Download File 2
-        run: curl -o /v1/soudni-exekutori.csv https://statistiky.ekcr.info/otevrena-data/data/soudni-exekutori.csv
+        run: curl -o v1/soudni-exekutori.csv https://statistiky.ekcr.info/otevrena-data/data/soudni-exekutori.csv
 
       - name: Download File 3
-        run: curl -o /v1/povinni.csv https://statistiky.ekcr.info/otevrena-data/data/povinni.csv
+        run: curl -o v1/povinni.csv https://statistiky.ekcr.info/otevrena-data/data/povinni.csv
 
       - name: Commit and push changes
         run: |
